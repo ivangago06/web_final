@@ -7,7 +7,6 @@ import (
 	"web_final/app"
 )
 
-// RenderTemplate renders and serves a template from the embedded filesystem optionally with given data
 func RenderTemplate(app *app.App, w http.ResponseWriter, contentPath string, data any) {
 	templatePath := app.Config.Template.BaseName
 

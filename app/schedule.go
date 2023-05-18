@@ -22,7 +22,7 @@ type Task struct {
 }
 
 func RunScheduledTasks(app *App, poolSize int, stop <-chan struct{}) {
-	// Run every time the server starts
+
 	for _, f := range app.ScheduledTasks.EveryReboot {
 		f(app)
 	}
@@ -65,7 +65,6 @@ func RunScheduledTasks(app *App, poolSize int, stop <-chan struct{}) {
 		}(task, runner)
 	}
 
-	// Wait for all goroutines to finish
 	wg.Wait()
 
 	// Close channels

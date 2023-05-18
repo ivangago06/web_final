@@ -9,7 +9,6 @@ import (
 	"web_final/templating"
 )
 
-// GetController is a wrapper struct for the App struct
 type GetController struct {
 	App *app.App
 }
@@ -31,7 +30,6 @@ func (getController *GetController) ShowRegister(w http.ResponseWriter, r *http.
 		CsrfToken string
 	}
 
-	// Create csrf token
 	CsrfToken, err := security.GenerateCsrfToken(w, r)
 	if err != nil {
 		log.Println("Error al generar el token.")
@@ -50,7 +48,6 @@ func (getController *GetController) ShowLogin(w http.ResponseWriter, r *http.Req
 		CsrfToken string
 	}
 
-	// Create csrf token
 	CsrfToken, err := security.GenerateCsrfToken(w, r)
 	if err != nil {
 		log.Println("Error al generar el token.")

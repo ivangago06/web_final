@@ -9,7 +9,6 @@ import (
 	"web_final/security"
 )
 
-// PostController is a wrapper struct for the App struct
 type PostController struct {
 	App *app.App
 }
@@ -27,7 +26,7 @@ func (postController *PostController) Login(w http.ResponseWriter, r *http.Reque
 	remember := r.FormValue("remember") == "on"
 
 	if username == "" || password == "" {
-		log.Println("Intente iniciar sesión con un nombre de usuario o una contraseña.")
+		log.Println("Intento de inico sesión con un nombre de usuario o una contraseña.")
 		http.Redirect(w, r, "/login", http.StatusFound)
 	}
 
@@ -43,7 +42,7 @@ func (postController *PostController) Login(w http.ResponseWriter, r *http.Reque
 }
 
 func (postController *PostController) Register(w http.ResponseWriter, r *http.Request) {
-	// Validate csrf token
+
 	_, err := security.VerifyCsrfToken(r)
 	if err != nil {
 		log.Println("Error verificando csrf token")
@@ -55,7 +54,7 @@ func (postController *PostController) Register(w http.ResponseWriter, r *http.Re
 	updatedAt := time.Now()
 
 	if username == "" || password == "" {
-		log.Println("Intente iniciar sesión con un nombre de usuario o una contraseña.")
+		log.Println("Intento de inicio de sesión con un nombre de usuario o una contraseña.")
 		http.Redirect(w, r, "/register", http.StatusFound)
 	}
 

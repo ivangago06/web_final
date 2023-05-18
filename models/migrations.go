@@ -6,11 +6,10 @@ import (
 	"web_final/database"
 )
 
-// RunAllMigrations defines the structs that should be represented in the database
 func RunAllMigrations(app *app.App) error {
-	// Declare new dummy user for reflection
+
 	user := User{
-		Id:        1, // Id is handled automatically, but it is added here to show it will be skipped during column creation
+		Id:        1,
 		Username:  "migrate",
 		Password:  "migrate",
 		CreatedAt: time.Now(),

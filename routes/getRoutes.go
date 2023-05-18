@@ -8,14 +8,12 @@ import (
 	"web_final/controllers"
 )
 
-// GetRoutes defines all project get routes
 func GetRoutes(app *app.App) {
-	// Get controller struct initialize
+
 	getController := controllers.GetController{
 		App: app,
 	}
 
-	// Serve static files
 	staticFS, err := fs.Sub(app.Res, "static")
 	if err != nil {
 		log.Println(err)
@@ -25,7 +23,6 @@ func GetRoutes(app *app.App) {
 	http.Handle("/static/", http.StripPrefix("/static/", staticHandler))
 	log.Println("Archivos cargados correctamente.")
 
-	// Pages
 	http.HandleFunc("/", getController.ShowHome)
 	http.HandleFunc("/login", getController.ShowLogin)
 	http.HandleFunc("/register", getController.ShowRegister)
